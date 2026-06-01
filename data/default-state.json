@@ -1,0 +1,13 @@
+{
+  "requests": [
+    {"initials":"EM","name":"Equipe Martins","subject":"Acesso à área técnica","preview":"Chegamos na obra, mas o acesso ainda...","time":"09:42","fresh":true,"unread":2,"tag":"ACESSO","priority":"medium","active":true,"color":"#2f9c76"},
+    {"initials":"CS","name":"Carlos Souza","subject":"Divergência no projeto","preview":"A medida que consta na planta não...","time":"09:18","unread":1,"tag":"PROJETO","priority":"high","color":"#7187b7"},
+    {"initials":"RE","name":"RF Esquadrias","subject":"Reagendamento de entrega","preview":"Precisamos alterar a data de entrega...","time":"Ontem","tag":"ENTREGA","priority":"medium","color":"#ae7f62"},
+    {"initials":"JP","name":"João Pedro","subject":"Material não recebido","preview":"O lote de ferragens da torre 2 ainda...","time":"Ontem","tag":"MATERIAL","priority":"high","color":"#5e9ea3"},
+    {"initials":"MA","name":"Montagem Alfa","subject":"Envio de documentação","preview":"Seguem os documentos dos novos...","time":"12 mai","tag":"DOCUMENTOS","priority":"low","color":"#947cb6"},
+    {"initials":"AV","name":"André Vieira","subject":"Finalização da OS #4798","preview":"Serviço concluído. Fotos anexadas...","time":"12 mai","tag":"CONCLUSÃO","priority":"low","color":"#b48c54"},
+    {"initials":"FE","name":"Ferraz Engenharia","subject":"Solicitação de vistoria","preview":"Podemos agendar a vistoria final...","time":"11 mai","tag":"VISTORIA","priority":"low","color":"#617eab"}
+  ],
+  "messages": [],
+  "accesses": []
+}
