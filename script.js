@@ -17,7 +17,48 @@ const toast = document.querySelector('#toast');
 
 const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;' }[character]));
 
+const DEMO_STORAGE_KEY = 'montia-demo-state';
+const useBrowserStorage = !['localhost', '127.0.0.1'].includes(window.location.hostname);
+
+function cloneFallbackState() {
+  return { requests:fallbackRequests, messages:[], accesses:[] };
+}
+
+function readBrowserState() {
+  const saved = localStorage.getItem(DEMO_STORAGE_KEY);
+  return saved ? JSON.parse(saved) : cloneFallbackState();
+}
+
+function writeBrowserState(state) {
+  localStorage.setItem(DEMO_STORAGE_KEY, JSON.stringify(state));
+}
+
+function browserApi(path, options = {}) {
+  const state = readBrowserState();
+  const payload = options.body ? JSON.parse(options.body) : {};
+  if (path === '/api/state') return state;
+  if (path === '/api/messages') {
+    const content = String(payload.content || '').trim();
+    if (!content) throw new Error('Digite uma mensagem antes de enviar');
+    const message = { content:content.slice(0, 1000), created_at:new Date().toISOString() };
+    state.messages.push(message);
+    writeBrowserState(state);
+    return message;
+  }
+  if (path === '/api/accesses') {
+    const area = String(payload.area || '').trim();
+    const validity = String(payload.validity || '').trim();
+    if (!area || !validity) throw new Error('Informe a área permitida e a validade');
+    const access = { area:area.slice(0, 100), validity:validity.slice(0, 100), team:'Equipe Martins', created_at:new Date().toISOString() };
+    state.accesses.push(access);
+    writeBrowserState(state);
+    return access;
+  }
+  throw new Error('Operação indisponível');
+}
+
 async function api(path, options = {}) {
+  if (useBrowserStorage) return browserApi(path, options);
   const response = await fetch(path, { headers:{ 'Content-Type':'application/json' }, ...options });
   const payload = await response.json();
   if (!response.ok) throw new Error(payload.error || 'Não foi possível concluir a operação');

@@ -1,48 +1,46 @@
 # MontIA — Central inteligente de demandas externas
 
-Aplicação local pronta para uso que centraliza demandas externas de equipes de montagem contratadas. A interface combina atendimento assistido por IA com controle de acesso temporário às obras.
+Aplicação pronta para demonstrar o recebimento, a compreensão e a resposta de demandas externas de equipes de montagem contratadas, com assistência de IA e controle de acesso temporário às obras.
 
-## Como abrir — sem usar terminal
+## Abrir agora — sem instalar ou configurar nada
 
-Você só precisa ter o [Python](https://www.python.org/downloads/) instalado no computador. Não é necessário instalar banco de dados ou pacotes adicionais.
+Para testar no computador, dê duplo clique no arquivo **`ABRIR-DEMONSTRACAO.html`**. A demonstração abrirá no navegador e funcionará sem instalar programas, iniciar servidores ou preencher parâmetros.
 
-### Windows
+As mensagens e liberações realizadas durante o teste ficam salvas somente no navegador utilizado. Isso permite fechar a página e continuar a demonstração posteriormente.
 
-1. Dê duplo clique no arquivo **`iniciar.bat`**.
-2. Aguarde alguns segundos: o MontIA abrirá automaticamente no navegador.
-3. Mantenha a janela preta aberta enquanto estiver utilizando o sistema.
+## Link público automático
 
-### macOS
+O projeto inclui uma publicação automática pelo GitHub Pages. Quando este repositório estiver disponível no GitHub, cada atualização da branch principal publicará a demonstração sem configuração adicional da aplicação.
 
-1. Dê duplo clique no arquivo **`iniciar.command`**.
-2. Aguarde alguns segundos: o MontIA abrirá automaticamente no navegador.
-3. Mantenha a janela do Terminal aberta enquanto estiver utilizando o sistema.
+O endereço terá o formato:
 
-> Se o macOS bloquear a primeira abertura, clique com o botão direito em `iniciar.command`, selecione **Abrir** e confirme.
+```text
+https://USUARIO-OU-ORGANIZACAO.github.io/NOME-DO-REPOSITORIO/
+```
 
-### Linux
+O endereço exato depende somente do local em que o repositório for armazenado no GitHub. O código da aplicação não precisa ser alterado.
 
-Dê duplo clique em **`iniciar.sh`** ou execute `./iniciar.sh`.
-
-## O que já funciona
+## O que já funciona na demonstração
 
 - Caixa de entrada com busca e filtros por prioridade e pendência.
 - Resumo inteligente da demanda, classificação de prioridade e identificação do canal de origem.
 - Resposta sugerida por IA com ações para aprovar, enviar ou editar antes do envio.
 - Contexto da obra e da ordem de serviço vinculados à conversa.
 - Solicitação de acesso temporário restrito por área e validade.
-- Persistência local das mensagens enviadas e das liberações de acesso.
+- Persistência das mensagens enviadas e das liberações de acesso no navegador.
 - Confirmação de liberação com registro local e emissão simulada de QR Codes individuais.
 - Layout responsivo para desktop, tablet e celular.
 
-Os dados ficam salvos somente neste computador no arquivo local `data/state.json` (criado automaticamente na primeira abertura). Para utilização em produção por múltiplos usuários, ainda será necessário configurar hospedagem, autenticação, banco de dados e integrações externas.
+## Uso local com servidor opcional
 
-## Acesso técnico opcional
+Também existe um modo local com servidor Python e persistência em arquivo. Ele é opcional e não é necessário para testar a demonstração.
 
-Para iniciar manualmente ou fazer verificações técnicas:
+- Windows: dê duplo clique em **`iniciar.bat`**.
+- macOS: dê duplo clique em **`iniciar.command`**.
+- Linux: dê duplo clique em **`iniciar.sh`**.
 
-```bash
-python3 server.py
-```
+Nesse modo, os dados ficam salvos no arquivo local `data/state.json`, criado automaticamente na primeira abertura.
 
-A aplicação abrirá automaticamente em `http://127.0.0.1:4173`.
+## Evolução para produção
+
+A demonstração está pronta para avaliação visual e funcional sem parametrização. Para utilização real por múltiplos usuários, ainda será necessário definir uma hospedagem de produção, autenticação, banco de dados compartilhado e integrações externas com WhatsApp, emissão de QR Codes e um provedor de IA.
